@@ -1004,3 +1004,94 @@ st.success("✅ Live Vehicle Tracking Active")
 
 
 
+import streamlit as st
+import av
+import cv2
+from ultralytics import YOLO
+from streamlit_webrtc import webrtc_streamer, VideoProcessorBase
+import threading
+
+# =====================================================
+# PAGE CONFIG
+# =====================================================
+
+st.set_page_config(
+    page_title="AI Vehicle Detection System",
+    page_icon="🚗",
+    layout="wide"
+)
+
+st.title("🚗 AI Vehicle Detection System")
+st.write("Live Webcam Object Detection using YOLOv8 + WebRTC")
+
+# =====================================================
+# LOAD MODEL
+# =====================================================
+
+@st.cache_resource
+def load_model():
+    return YOLO("yolov8n.pt")
+
+model = load_model()
+
+# =====================================================
+# SIDEBAR
+# =====================================================
+
+st.sidebar.header("Settings")
+
+confidence = st.sidebar.slider(
+    "Confidence Threshold",
+    0.1,
+    1.0,
+    0.5,
+    0.05
+)
+
+# =====================================================
+# VIDEO PROCESSOR
+# =====================================================
+
+class YOLOProcessor(VideoProcessorBase):
+
+    def __init__(self):
+        self.lock = threading.Lock()
+
+    def recv(self, frame):
+
+        img = frame.to_ndarray(format="bgr24")
+
+        results = model.predict(
+            source=img,
+            conf=confidence,
+            verbose=False
+        )
+
+        annotated_frame = results[0].plot()
+
+        return av.VideoFrame.from_ndarray(
+            annotated_frame,
+            format="bgr24"
+        )
+
+# =====================================================
+# LIVE CAMERA
+# =====================================================
+
+st.subheader("📷 Live Webcam Detection")
+
+webrtc_streamer(
+    key="vehicle-detection",
+    video_processor_factory=YOLOProcessor,
+    media_stream_constraints={
+        "video": True,
+        "audio": False,
+    },
+    async_processing=True,
+)
+
+st.success("✅ Browser Camera + YOLO Detection Running")
+
+
+
+
