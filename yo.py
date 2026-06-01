@@ -854,7 +854,7 @@ run = st.checkbox("▶ Start Vehicle Tracking")
 
 FRAME_WINDOW = st.image([])
 
-camera = cv2.VideoCapture(0)
+camera = cv2.VideoCapture(1)
 
 # =========================================================
 # TRACKING VARIABLES
