@@ -1,6 +1,9 @@
 streamlit
 ultralytics
-pillow
-numpy
-pandas
+streamlit-webrtc
 opencv-python-headless
+av
+numpy
+torch
+torchvision
+pillow
