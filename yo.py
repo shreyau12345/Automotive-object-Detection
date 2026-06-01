@@ -238,7 +238,7 @@ elif option == "Webcam Detection":
 
     FRAME_WINDOW = st.image([])
 
-    camera = cv2.VideoCapture(1)
+    camera = cv2.VideoCapture(0)
 
     while run:
 
@@ -307,7 +307,7 @@ run = st.checkbox("Start Speed Detection")
 
 FRAME_WINDOW = st.image([])
 
-camera = cv2.VideoCapture(1)
+camera = cv2.VideoCapture(0)
 
 # =====================================================
 # VARIABLES
@@ -334,7 +334,7 @@ while run:
     # YOLO Detection
     results = model(frame)
 
-    annotated_frame = results[1].plot()
+    annotated_frame = results[0].plot()
 
     # ============================================
     # DETECT VEHICLES
@@ -644,7 +644,7 @@ run = st.checkbox("▶ Start Speed Monitoring")
 
 FRAME_WINDOW = st.image([])
 
-camera = cv2.VideoCapture(1)
+camera = cv2.VideoCapture(0)
 
 # =====================================================
 # VARIABLES
@@ -680,7 +680,7 @@ while run:
     # YOLO Detection
     results = model(frame)
 
-    annotated_frame = results[1].plot()
+    annotated_frame = results[0].plot()
 
     # =================================================
     # DETECT VEHICLES
@@ -854,7 +854,7 @@ run = st.checkbox("▶ Start Vehicle Tracking")
 
 FRAME_WINDOW = st.image([])
 
-camera = cv2.VideoCapture(1)
+camera = cv2.VideoCapture(0)
 
 # =========================================================
 # TRACKING VARIABLES
