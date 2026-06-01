@@ -307,7 +307,7 @@ run = st.checkbox("Start Speed Detection")
 
 FRAME_WINDOW = st.image([])
 
-camera = cv2.VideoCapture(0)
+camera = cv2.VideoCapture(1)
 
 # =====================================================
 # VARIABLES
@@ -644,7 +644,7 @@ run = st.checkbox("▶ Start Speed Monitoring")
 
 FRAME_WINDOW = st.image([])
 
-camera = cv2.VideoCapture(0)
+camera = cv2.VideoCapture(1)
 
 # =====================================================
 # VARIABLES
