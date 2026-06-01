@@ -3,4 +3,4 @@ ultralytics
 pillow
 numpy
 pandas
-opencv-python
+opencv-python-headless
