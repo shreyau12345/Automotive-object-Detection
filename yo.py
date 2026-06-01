@@ -238,7 +238,7 @@ elif option == "Webcam Detection":
 
     FRAME_WINDOW = st.image([])
 
-    camera = cv2.VideoCapture(0)
+    webrtc_streamer(...)
 
     while run:
 
