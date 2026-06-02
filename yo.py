@@ -49,7 +49,7 @@ h1,h2,h3{
 # TITLE
 # =====================================================
 
-st.title("🚗 Smart AI Driving Eligibility System")
+st.title("🚗 Smart AI Automotive Object Detection System")
 
 st.write("AI Based Vehicle & Driver Verification System")
 
