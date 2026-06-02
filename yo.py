@@ -251,7 +251,7 @@ elif option == "Webcam Detection":
         # YOLO Detection
         results = model(frame)
 
-        annotated_frame = results[1].plot()
+        annotated_frame = results[0].plot()
 
         FRAME_WINDOW.image(
             annotated_frame,
